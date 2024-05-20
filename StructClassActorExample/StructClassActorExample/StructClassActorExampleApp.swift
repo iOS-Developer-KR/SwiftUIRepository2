@@ -11,7 +11,12 @@ import SwiftUI
 struct StructClassActorExampleApp: App {
     var body: some Scene {
         WindowGroup {
+<<<<<<< HEAD
             ContentView()
+=======
+//            ContentView()
+            StructClassActor(isActive: false)
+>>>>>>> dd7221b (updated)
         }
     }
 }

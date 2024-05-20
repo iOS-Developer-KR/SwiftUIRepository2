@@ -23,9 +23,15 @@ struct ContentView: View {
     }
 }
 
+<<<<<<< HEAD
 #Preview {
     ContentView()
 }
+=======
+//#Preview {
+//    ContentView()
+//}
+>>>>>>> dd7221b (updated)
 
 extension ContentView {
     
@@ -36,6 +42,11 @@ extension ContentView {
 //        classTest1()
 //        structTest2()
         classTest2()
+<<<<<<< HEAD
+=======
+        printDivider()
+        actorTest1()
+>>>>>>> dd7221b (updated)
     }
     
     private func printDivider() {
@@ -74,6 +85,25 @@ extension ContentView {
         print("ObjectA: ", objectA.title)
         print("ObjectB: ", objectB.title)
     }
+<<<<<<< HEAD
+=======
+    
+    private func actorTest1() {
+        Task {
+            let objectA = MyActor(title: "Starting title!")
+            await print("ObjectA: ", objectA.title)
+            
+            let objectB = objectA
+            await print("ObjectB: ", objectA.title)
+            
+            await objectB.updateTitle(newTitle: "Second title")
+            print("ObjectB title changed.")
+            
+            await print("ObjectA: ", objectA.title)
+            await print("ObjectB: ", objectB.title)
+        }
+    }
+>>>>>>> dd7221b (updated)
 }
 
 struct MyStruct {
@@ -141,6 +171,21 @@ class MyClass {
     }
 }
 
+<<<<<<< HEAD
+=======
+actor MyActor {
+    var title: String
+    
+    init(title: String) {
+        self.title = title
+    }
+    
+    func updateTitle(newTitle: String) {
+        title = newTitle
+    }
+}
+
+>>>>>>> dd7221b (updated)
 extension ContentView {
     
     private func classTest2() {
@@ -157,3 +202,42 @@ extension ContentView {
         print("Class2: ", class2.title)
     }
 }
+<<<<<<< HEAD
+=======
+
+class StructClassActorViewModel: ObservableObject {
+    
+    @Published var title: String = ""
+    
+    init() {
+        print("ViewModel INIT")
+    }
+}
+
+struct StructClassActor: View {
+    
+    @StateObject private var viewModel = StructClassActorViewModel()
+    @State var isActive: Bool = false
+    
+    init(isActive: Bool) {
+        self.isActive = isActive
+        print("View INIT")
+    }
+    
+    var body: some View {
+        Text("Hello World!")
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .ignoresSafeArea()
+            .background()
+            .background(isActive ? Color.red : Color.blue)
+            .onTapGesture {
+                isActive.toggle()
+                print("Tapped")
+            }
+    }
+}
+
+#Preview {
+    StructClassActor(isActive: false)
+}
+>>>>>>> dd7221b (updated)

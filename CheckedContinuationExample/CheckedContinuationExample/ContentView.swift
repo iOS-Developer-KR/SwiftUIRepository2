@@ -69,8 +69,11 @@ class CheckedContinuationViewModel: ObservableObject {
             self?.image = image
         }
     }
+<<<<<<< HEAD
     
 
+=======
+>>>>>>> dd7221b (updated)
 }
 
 struct ContentView: View {
