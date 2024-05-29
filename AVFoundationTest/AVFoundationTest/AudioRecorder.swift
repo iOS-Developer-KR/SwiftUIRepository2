@@ -14,7 +14,7 @@ class AudioRecorder: NSObject {
     var audioPlayer = AVAudioPlayer()
     var recordingSession = AVAudioSession.sharedInstance()
 
-    var captureURL: URL { // 캡쳐한 url을 저장
+    var captureURL: URL {
         (FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
             .first?.appendingPathComponent("recording.m4a", conformingTo: .audio))!
     }
@@ -24,13 +24,13 @@ class AudioRecorder: NSObject {
         do {
             try recordingSession.setCategory(.playAndRecord, options: .defaultToSpeaker)
             
-            AVAudioApplication.requestRecordPermission { [unowned self] allowed in
+            AVAudioApplication.requestRecordPermission { allowed in
                 if !allowed {
                     print("Recording not allowed by the user" as! Error)
                 }
             }
         } catch {
-            print("초기화오류" + error.localizedDescription)
+            print(error.localizedDescription)
         }
     }
     
@@ -43,11 +43,10 @@ class AudioRecorder: NSObject {
                 AVNumberOfChannelsKey: 1,
                 AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
             ])
-            print("녹음이 되고있긴 한거지?")
             recorder.record()
             recorder.delegate = self
         } catch {
-            print("녹음에러:" + error.localizedDescription)
+            print(error.localizedDescription)
         }
     }
     
@@ -65,11 +64,10 @@ class AudioRecorder: NSObject {
     
     func playRecordAudio() {
         do {
-            print("녹음재생시작")
             audioPlayer = try AVAudioPlayer(contentsOf: captureURL)
             audioPlayer.play()
         } catch {
-            print("녹음재생에러" + error.localizedDescription)
+            print(error.localizedDescription)
         }
     }
     
