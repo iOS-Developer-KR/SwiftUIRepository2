@@ -13,7 +13,7 @@ class AudioRecorder: NSObject {
     var audioPlayer: AVAudioPlayer!
     var recordingSession = AVAudioSession.sharedInstance()
     var animationTimer: Timer?
-    var recordingTimer: Timer? // 유저가 말을 멈췄을 때를 위해 사용
+    var recordingTimer: Timer?
     var audioPower = 0.0
     var prevAudioPower: Double?
 
@@ -54,25 +54,26 @@ class AudioRecorder: NSObject {
             animationTimer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true, block: { [unowned self] _ in
                 guard self.recorder != nil else { return }
                 self.recorder.updateMeters()
-                // power: 현재 음량에 대한 크기 조절 // 보통 averagePower는
-                let power = max(0, 1 - abs(Double(self.recorder.averagePower(forChannel: 0)) / 50) )
-                print("\(power)")
+                audioPower =  max(0, 1 - abs(Double(self.recorder.averagePower(forChannel: 0)) / 50) )
             })
             
-//            recordingTimer = Timer.scheduledTimer(withTimeInterval: 1.6, repeats: true, block: { [unowned self] _ in
-//                guard self.recorder != nil else { return }
-//                self.recorder.updateMeters()
-//                let power =  min(1, max(0, 1 - abs(Double(self.recorder.averagePower(forChannel: 0)) / 50) ))
-//                if self.prevAudioPower == nil {
-//                    self.prevAudioPower = power
-//                    return
-//                }
-//                if let preAudioPower = self.prevAudioPower, preAudioPower < 0.25 && power < 0.175 {
-//                    self.stopRecordAudio()
-//                }
-//                self.prevAudioPower = power
-//            })
+            recordingTimer = Timer.scheduledTimer(withTimeInterval: 1.6, repeats: true, block: { [unowned self] _ in
+                guard self.recorder != nil else { return }
+                self.recorder.updateMeters()
+                let power =  max(0, 1 - abs(Double(self.recorder.averagePower(forChannel: 0)) / 50) )
+                if self.prevAudioPower == nil {
+                    self.prevAudioPower = power
+                    return
+                }
+                // preAudioPower에 1.6초마다 측정한 데이터를 데이터를 넣고 1.6초마다 측정한 데이터와 0.2초마다 측정한 데이터의 소리가 무의미한 정도의 크기라면 녹음을 멈춘다.
+                if let preAudioPower = self.prevAudioPower, preAudioPower < 0.25 && power < 0.175 {
+                    self.stopRecordAudio()
+                }
+                print(power)
+                self.prevAudioPower = power // 이전 데이터를 저장하는 변수에 1.6초마다 기록한 데이터값을 넣는다.
+            })
         } catch {
+            resetValues()
             print(error.localizedDescription)
         }
     }
@@ -82,7 +83,7 @@ class AudioRecorder: NSObject {
     }
     
     func stopRecordAudio() {
-        recorder.stop()
+        resetValues()
     }
     
     func deleteRecordAudio() {
@@ -96,6 +97,19 @@ class AudioRecorder: NSObject {
         } catch {
             print(error.localizedDescription)
         }
+    }
+    
+    func resetValues() {
+        audioPower = 0
+        prevAudioPower = nil
+        recorder.stop()
+        recorder = nil
+        audioPlayer?.stop()
+        audioPlayer = nil
+        recordingTimer?.invalidate()
+        recordingTimer = nil
+        animationTimer?.invalidate()
+        animationTimer = nil
     }
     
     
