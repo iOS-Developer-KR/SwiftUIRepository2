@@ -12,7 +12,7 @@ import SwiftUI
 
 
 public final class ChatGPT: ObservableObject {
-    let openAIClient = OpenAI(apiToken: "")
+    let openAIClient = OpenAI(apiToken: "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")
 
 
     @Published var conversations: [Conversation] = []
@@ -85,7 +85,6 @@ public final class ChatGPT: ObservableObject {
                     let existingMessages = conversations[conversationIndex].messages
 
                     let messageText = choice.delta.content ?? ""
-                    print(messageText + "이게 받은 값이라고?")
 
                     let message = Message(
                         id: partialChatResult.id,

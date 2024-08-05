@@ -32,7 +32,6 @@ struct ConversationView: View {
 
                                 Text(message.content)
                                     .textFieldStyle(.roundedBorder)
-                                    .background(Color.gray.opacity(0.1))
                                 
                                 Spacer()
                             }
