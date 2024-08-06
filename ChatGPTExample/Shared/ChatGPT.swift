@@ -8,7 +8,7 @@
 import Foundation
 import OpenAI
 import SwiftUI
-
+    
 
 
 public final class ChatGPT: ObservableObject {
