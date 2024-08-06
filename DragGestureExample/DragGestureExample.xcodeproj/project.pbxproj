@@ -12,6 +12,7 @@
 		2BB6B1B32C5F48FB0096A745 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BB6B1B22C5F48FB0096A745 /* Assets.xcassets */; };
 		2BB6B1B62C5F48FB0096A745 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BB6B1B52C5F48FB0096A745 /* Preview Assets.xcassets */; };
 		2BB6B1BE2C60BFDD0096A745 /* Quadrant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB6B1BD2C60BFDD0096A745 /* Quadrant.swift */; };
+		2BB6B1C02C6118290096A745 /* ContentView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB6B1BF2C6118290096A745 /* ContentView2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		2BB6B1B52C5F48FB0096A745 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2BB6B1B72C5F48FB0096A745 /* DragGestureExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DragGestureExample.entitlements; sourceTree = "<group>"; };
 		2BB6B1BD2C60BFDD0096A745 /* Quadrant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quadrant.swift; sourceTree = "<group>"; };
+		2BB6B1BF2C6118290096A745 /* ContentView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				2BB6B1AE2C5F48FA0096A745 /* DragGestureExampleApp.swift */,
 				2BB6B1B02C5F48FA0096A745 /* ContentView.swift */,
+				2BB6B1BF2C6118290096A745 /* ContentView2.swift */,
 				2BB6B1BD2C60BFDD0096A745 /* Quadrant.swift */,
 				2BB6B1B22C5F48FB0096A745 /* Assets.xcassets */,
 				2BB6B1B72C5F48FB0096A745 /* DragGestureExample.entitlements */,
@@ -143,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BB6B1BE2C60BFDD0096A745 /* Quadrant.swift in Sources */,
+				2BB6B1C02C6118290096A745 /* ContentView2.swift in Sources */,
 				2BB6B1B12C5F48FA0096A745 /* ContentView.swift in Sources */,
 				2BB6B1AF2C5F48FA0096A745 /* DragGestureExampleApp.swift in Sources */,
 			);

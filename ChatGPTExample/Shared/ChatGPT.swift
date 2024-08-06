@@ -12,7 +12,7 @@ import SwiftUI
 
 
 public final class ChatGPT: ObservableObject {
-    let openAIClient = OpenAI(apiToken: "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")
+    let openAIClient = OpenAI(apiToken: "")
 
 
     @Published var conversations: [Conversation] = []
