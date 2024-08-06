@@ -1,0 +1,15 @@
+added DragGestureExample
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Date:      Tue Aug 6 10:51:03 2024 +0900
+# On branch main
+# Changes to be committed:
+#	modified:   .DS_Store
+#	modified:   ChatGPTExample/Shared/ChatGPT.swift
+#	modified:   DragGestureExample/DragGestureExample.xcodeproj/project.pbxproj
+#	modified:   DragGestureExample/DragGestureExample.xcodeproj/project.xcworkspace/xcuserdata/taewonyoon.xcuserdatad/UserInterfaceState.xcuserstate
+#	modified:   DragGestureExample/DragGestureExample/ContentView.swift
+#	new file:   DragGestureExample/DragGestureExample/ContentView2.swift
+#
